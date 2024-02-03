@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "concurrencybooster",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftBoosterPack/ConcurrencyBooster.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "7c6fd22685027e7500423cc0d8fffd3a3cf1a8c5"
+      }
+    }
+  ],
+  "version" : 2
+}
