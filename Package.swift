@@ -3,27 +3,33 @@
 import PackageDescription
 
 let package = Package(
-  name: "REPLACE",
+  name: "CombineExtensionsBooster",
   platforms: [
     .iOS(.v16), .macOS(.v12), .macCatalyst(.v13),
   ],
   products: [
     .library(
-      name: "REPLACE",
-      targets: ["REPLACE"]
+      name: "CombineExtensionsBooster",
+      targets: ["CombineExtensionsBooster"]
     ),
+  ],
+  dependencies: [
+    .package(url: "https://github.com/SwiftBoosterPack/ConcurrencyBooster.git", branch: "main")
   ],
   targets: [
     .target(
-      name: "REPLACE",
-      path: "REPLACE",
+      name: "CombineExtensionsBooster",
+      dependencies: [
+        .product(name: "ConcurrencyBooster", package: "ConcurrencyBooster")
+      ],
+      path: "Source",
       exclude: [],
       swiftSettings: []
     ),
     .testTarget(
-      name: "REPLACE_TESTS",
-      dependencies: ["REPLACE"],
-      path: "REPLACE_TESTS"
+      name: "CombineExtensionsBoosterTests",
+      dependencies: ["CombineExtensionsBooster"],
+      path: "SourceTests"
     ),
   ]
 )
