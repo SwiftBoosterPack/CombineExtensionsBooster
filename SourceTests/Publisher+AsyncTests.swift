@@ -26,7 +26,7 @@ final class Publisher_AsyncTests: XCTestCase {
     }
     // We want the async task to have time to setup before we send a value, so send the value
     // async.
-    DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(1)) {
+    DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(10)) {
       publisher.send(value)
     }
 
@@ -56,7 +56,7 @@ final class Publisher_AsyncTests: XCTestCase {
 
     // We want the async task to have time to setup before we send a value, so send the value
     // async.
-    DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(1)) {
+    DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(10)) {
       publisher.send(completion: .failure(sentError))
     }
 
@@ -89,7 +89,7 @@ final class Publisher_AsyncTests: XCTestCase {
 
     // We want the async task to have time to setup before we send a value, so send the value
     // async.
-    DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(1)) {
+    DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(10)) {
       publisher.send(completion: .finished)
     }
 
