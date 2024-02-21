@@ -1,5 +1,5 @@
 //
-//  Combine+Subscribing.swift
+//  Publisher+Subscribing.swift
 //
 //
 //  Created by Mike Welsh on 2024-02-03.
