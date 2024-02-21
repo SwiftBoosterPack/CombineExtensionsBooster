@@ -26,7 +26,7 @@ class MyViewModel {
 
   func createSubscription() {
     // Async function can now be merged with other Combine streams.
-    AsyncPublisher({ await self.someAsyncTask() })
+    AsyncConvertingPublisher({ await self.someAsyncTask() })
       .eraseToAnyPublisher()
       .subscribe(self, onValue: { value in
         // Handle the value
