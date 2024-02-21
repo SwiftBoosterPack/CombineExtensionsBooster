@@ -28,7 +28,8 @@ public extension AnyPublisher {
   }
 }
 
-/// A publisher used to capture an `AsyncClosure`
+/// A publisher used to capture an `AsyncClosure`. Each subscription will _re-execute_ the `AsyncClosure` - so be very careful when subscribing.
+/// Consider using `.share()` if the publisher is intended to have multiple subscribers to avoid additional `AsyncClosure` executions.
 public struct AsyncConvertingPublisher<Output>: Publisher {
   public typealias Output = Output
   public typealias Failure = any Error
