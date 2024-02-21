@@ -101,10 +101,10 @@ final class Publisher_AsyncTests: XCTestCase {
     // Arrange
     let valueExpectation = expectation(description: "Receive values")
     let completionExpectation = expectation(description: "Receive completion")
-    let asyncClosure: AsyncConvertingPublisher<String>.AsyncClosure = { await self.doubleString("test") }
+    let asyncClosure = { await self.doubleString("test") }
 
     // Act
-    AsyncConvertingPublisher<String>(asyncFunc: asyncClosure)
+    AsyncConvertingPublisher(asyncFunc: asyncClosure)
       .eraseToAnyPublisher()
       .subscribe(self, onValue: {
         XCTAssertEqual($0, "test test")
@@ -132,7 +132,7 @@ final class Publisher_AsyncTests: XCTestCase {
     let asyncClosure: AsyncConvertingPublisher<String>.AsyncClosure = { throw sentError }
 
     // Act
-    AsyncConvertingPublisher<String>(asyncFunc: asyncClosure)
+    AsyncConvertingPublisher(asyncFunc: asyncClosure)
       .eraseToAnyPublisher()
       .subscribe(self, onValue: {
         XCTAssertEqual($0, "test test")
@@ -153,7 +153,7 @@ final class Publisher_AsyncTests: XCTestCase {
 
   func testAsyncToPublisherConcurrentSubscribe() {
     // Arrange
-    let asyncClosure: AsyncConvertingPublisher<String>.AsyncClosure = { await self.doubleString("test") }
+    let asyncClosure = { await self.doubleString("test") }
     let publisher = AsyncConvertingPublisher(asyncFunc: asyncClosure)
     // Dispatch the operations on a concurrent queue
     let concurrentQueue = DispatchQueue(label: "com.example.concurrentQueue", attributes: .concurrent)
