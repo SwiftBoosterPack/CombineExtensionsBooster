@@ -14,7 +14,8 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(url: "https://github.com/SwiftBoosterPack/ConcurrencyBooster.git", branch: "main")
+    .package(url: "https://github.com/SwiftBoosterPack/ConcurrencyBooster.git", branch: "main"),
+    .package(url: "https://github.com/pointfreeco/combine-schedulers", from: "1.0.0"),
   ],
   targets: [
     .target(
@@ -28,7 +29,10 @@ let package = Package(
     ),
     .testTarget(
       name: "CombineExtensionsBoosterTests",
-      dependencies: ["CombineExtensionsBooster"],
+      dependencies: [
+        "CombineExtensionsBooster",
+        .product(name: "CombineSchedulers", package: "combine-schedulers"),
+      ],
       path: "SourceTests"
     ),
   ]
